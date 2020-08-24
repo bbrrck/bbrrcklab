@@ -8,7 +8,7 @@ if ~isfield(options,'verbose'),  options.verbose  = 1; end
 if ~isfield(options,'datapath'), options.datapath = 'data/'; end
 if ~isfield(options,'curvepath'),options.curvepath= options.datapath; end
 
-if options.verbose==1,
+if options.verbose==1
     %separatorBig();
     fprintf('Read %s%s\n',options.datapath,options.filename);
 end
@@ -26,7 +26,7 @@ mode = str2num(parts{1});
 % There are two possibilities for the file structure.
 % if mode==0, curves are stored in separate files.
 % else, mode expresses the curvecount.
-if mode == 0,
+if mode == 0
     line = fgetl( netfile );
     parts = strsplit(line,'#');
     count = str2num(parts{1});

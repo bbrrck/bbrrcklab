@@ -4,9 +4,9 @@ knots = 0:9;
 t = linspace(min(knots),max(knots),1000);
 N = zeros(length(knots)-1,length(t),order+1);
 
-for k=0:degree,
-    for i=1:length(knots)-k-1,
-        if k==0,
+for k=0:degree
+    for i=1:length(knots)-k-1
+        if k==0
             N(i,:,k+1) = t>=knots(i) & t<knots(i+1);
         else
             w0 = (t - knots(i)) ./ (knots(i+k)-knots(i));
@@ -20,7 +20,7 @@ figure(gcf); clf; hold on;
 axis on; grid on; axis equal;
 count = 5;
 
-for k=1:degree,
+for k=1:degree
     axis([-.1 .1 -.1 .1]+[0 5+degree 0 1]);
     idx = t <= 5+k;
     x = repmat(t(idx),count,1)';
@@ -28,6 +28,6 @@ for k=1:degree,
     cla;
     plot(x,y,'-','LineWidth',2,'Color',[117 197 240]/255);
     pause;
-    print(gcf,['/home/bbrrck/teaching/geonum/2017/TD/degree' num2str(k) '.svg'],'-dsvg');
+%     print(gcf,['/home/bbrrck/teaching/geonum/2017/TD/degree' num2str(k) '.svg'],'-dsvg');
 end
 

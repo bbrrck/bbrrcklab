@@ -11,22 +11,26 @@ function screenshot(varargin)
 % Tibor Stanko 2015-2016
 %
     dpi = 100;
-    path = '~/Screenshots/';
-
+    path = '~/postdoc-screenshots/';
+    filename = ['Screenshot ' datestr(now,'yyyy-mm-dd at HH.MM.SS')];
     figh = gcf;
     for i = 1:2:length(varargin)
         name  = varargin{i};
         value = varargin{i+1};
         switch name
+            case 'filename'
+              filename = value;
             case 'dpi'
                 dpi = value;
             case 'fig'
                 figh = value;
+            case 'path'
+                path = value;
             otherwise
                 warning(['wrong param ' name])
         end
     end
-    filename = ['Screenshot ' datestr(now,'yyyy-mm-dd HH.MM.SS') '.png'];
+    filename = [filename '.png'];
     if ~exist(path,'dir')
         mkdir(path);
     end
